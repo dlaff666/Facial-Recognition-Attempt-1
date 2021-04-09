@@ -25,10 +25,6 @@ face_locations = face_recognition.face_locations(image)
 encodings = face_recognition.face_encodings(rgb)
 names = []
 
-while len(encodings) > len(face_locations):
-    encodings.pop(0)
-    print("Extra discarded")
-
 #Loop over the facial embeddings incase we have multiple embeddings for multiple fcaes
 for encoding in encodings:
     #Compare encodings with encodings in data["encodings"]
@@ -59,7 +55,6 @@ for encoding in encodings:
 
     #Update the list of names
     names.append(name)
-print(names)
 
 #faces appearing in random order
 #Loop over the recognized faces
