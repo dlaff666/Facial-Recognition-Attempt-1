@@ -69,8 +69,14 @@ while True:
             cv2.rectangle(frame, (x, y), (w, h), (0, 255, 0), 2)
             cv2.putText(frame, name, (w, y), cv2.FONT_HERSHEY_SIMPLEX,
              0.75, (0, 255, 0), 2)
+
+    #Display each frame
     cv2.imshow("Frame", frame)
+
+    #Close each frame after 1 ms
     if cv2.waitKey(1) &amp; 0xFF == ord('q'):
         break
+
+#Release the video feed
 video_capture.release()
 cv2.destroyAllWindows()
