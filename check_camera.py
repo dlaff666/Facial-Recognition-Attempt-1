@@ -77,6 +77,5 @@ while True:
     if cv2.waitKey(1) &amp; 0xFF == ord('q'):
         break
 
-#Release the video feed
 video_capture.release()
 cv2.destroyAllWindows()
