@@ -29,6 +29,7 @@ while video_capture.isOpened():
     ret, frame = video_capture.read()
 
     if(counter<1000 and (counter%25)==0):
+        print(counter)
         #Convert the input frame from BGR to RGB 
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         #The facial embeddings for face in input
@@ -78,9 +79,9 @@ while video_capture.isOpened():
         break
 
 #Release the video feed
+for (name, value, *rest) in name_list:
+    if (value):
+        print(name)
 video_capture.release()
 cv2.destroyAllWindows()
 
-for (name, value) in name_list:
-    if (value):
-        print(name)
