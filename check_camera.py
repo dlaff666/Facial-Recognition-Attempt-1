@@ -4,6 +4,9 @@ import pickle
 import time
 import cv2
 import os
+import dlib
+dlib.DLIB_USE_CUDA = True
+dlib.cuda.set_device(0)
  
 #Find path of xml file containing haarcascade file 
 cascPathface = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"

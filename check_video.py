@@ -4,6 +4,9 @@ import pickle
 import time
 import cv2
 import os
+import dlib
+dlib.DLIB_USE_CUDA = True
+dlib.cuda.set_device(0)
  
 #Find path of xml file containing haarcascade file 
 cascPathface = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"
@@ -13,7 +16,6 @@ faceCascade = cv2.CascadeClassifier(cascPathface)
 
 #Load the known faces and embeddings saved in last file
 data = pickle.loads(open('face_enc', "rb").read()) 
-print(data)
 print("Streaming started")
 video_capture = cv2.VideoCapture('TARGET_IMAGE/video.mp4')
 counter = 0
@@ -26,7 +28,7 @@ while video_capture.isOpened():
     #Grab the frame from the threaded video stream
     ret, frame = video_capture.read()
 
-    if((counter%25)==0):
+    if((counter%2)==0):
         #Convert the input frame from BGR to RGB 
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         #The facial embeddings for face in input
@@ -58,7 +60,6 @@ while video_capture.isOpened():
 
                         #Check the names at respective indexes we stored in matchedIdxs
                         name = data["names"][i]
-                        print(name)
 
                         #Increase count for the name we got
                         counts[name] = counts.get(name, 0) + 1

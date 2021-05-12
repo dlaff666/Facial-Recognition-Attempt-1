@@ -5,7 +5,7 @@ import time
 import cv2
 import os
 import math
- 
+
 #Find path of xml file containing haarcascade file 
 cascPathface = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"
 
@@ -16,7 +16,7 @@ faceCascade = cv2.CascadeClassifier(cascPathface)
 data = pickle.loads(open('face_enc', "rb").read()) 
 data_encodings = data["encodings"]
 data_names = data["names"]
-video_capture = cv2.VideoCapture('TARGET_IMAGE/video.mp4')
+video_capture = cv2.VideoCapture(0)
 
 counter = 0
 check_frequency = 10
