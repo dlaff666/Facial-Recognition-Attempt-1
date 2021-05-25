@@ -100,8 +100,8 @@ while video_capture.isOpened():
             cv2.rectangle(frame, (x, y), (w, h), (0, 255, 0), 2)
             cv2.putText(frame, name, (w, y), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 255, 0), 2)
 
-    if(not counter%check_frequency == 0):
-        if cv2.waitKey(25) & 0xFF == ord('q'):
+    if(not counter%check_frequency == 0 and counter%2 == 0):
+        if cv2.waitKey(50) & 0xFF == ord('q'):
             break
     #Display each frame
     cv2.imshow("Frame", frame)
